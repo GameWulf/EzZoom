@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[32,)"
+#issueTrackerURL="http://my.issue.tracker/" #optional
+license="ARR"
+
+[[mods]]
+    modId="ezzoom"
+    version="${version}"
+    displayURL=""
+    displayName="EzZoom"
+    authors="JTK222"
+    description='''
+    EzZoom is a very basic zooming mod, pressing the keybind will just zoom in.'''
+
+[[dependencies]]
+    modId="forge"
+    mandatory=true
+    versionRange="[32,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16,)"
+    ordering="NONE"
+    side="BOTH"
