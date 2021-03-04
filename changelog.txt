@@ -1,0 +1,6 @@
+v1.1.1
+* Fixed missing localization for the zoom key
+
+v1.1
++ Added Config Options
++ Added "Advanced Zoom", which gives you finer control over your zoom

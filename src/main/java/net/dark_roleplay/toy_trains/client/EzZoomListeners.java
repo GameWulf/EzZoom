@@ -1,6 +1,8 @@
 package net.dark_roleplay.toy_trains.client;
 
 import net.dark_roleplay.toy_trains.EzZoom;
+import net.dark_roleplay.toy_trains.config.EzZoomConfig;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.InputEvent;
@@ -28,7 +30,27 @@ public class EzZoomListeners {
 
 	@SubscribeEvent
 	public static void updateFOV(FOVUpdateEvent event){
-		if(EzZoomClient.shouldZoom())
+		if(!EzZoomClient.shouldZoom()) return;
+
+		if(EzZoomConfig.ADVANCED_ZOOM.get()){
+			event.setNewfov((float) MathHelper.lerp(
+					(EzZoomClient.currentZoomStep()+1)/EzZoomConfig.ADV_ZOOM_STEPS.get(),
+					EzZoomConfig.ADV_ZOOM_STRENGTH_MAX.get(),
+					EzZoomConfig.ADV_ZOOM_STRENGTH_MIN.get())
+			);
+		}else {
 			event.setNewfov(0);
+		}
+	}
+
+	@SubscribeEvent
+	public static void detectScroll(InputEvent.MouseScrollEvent event){
+		if(EzZoomClient.shouldZoom() && EzZoomConfig.ADVANCED_ZOOM.get()){
+			if(event.getScrollDelta() > 0)
+				EzZoomClient.increaseZoomStep();
+			else
+				EzZoomClient.decreaseZoomStep();
+			event.setCanceled(true);
+		}
 	}
 }
