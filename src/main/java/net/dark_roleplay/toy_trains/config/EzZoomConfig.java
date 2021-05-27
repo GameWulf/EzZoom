@@ -22,7 +22,7 @@ public class EzZoomConfig {
 
 		ADVANCED_ZOOM = builder
 				.comment("Enable \"advanced\" zoom, which requires you to push a button, and use the scroll wheel to zoom in/out")
-				.define("EnableAdvancedZoom", false);
+				.define("EnableAdvancedZoom", true);
 
 		builder.comment("Simple zoom settings (used if advanced zoom is disabled").push("SimpleZoom");
 		SIMPLE_ZOOM_STRENGTH = builder
